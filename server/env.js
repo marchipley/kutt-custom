@@ -28,8 +28,8 @@ if (process.argv.includes("--production")) {
 
 const spec = {
   PORT: num({ default: 3000 }),
-  SITE_NAME: str({ example: "Kutt", default: "Kutt" }),
-  DEFAULT_DOMAIN: str({ example: "kutt.it", default: "localhost:3000" }),
+  SITE_NAME: str({ example: "SleuthLink", default: "SleuthLink" }),
+  DEFAULT_DOMAIN: str({ example: "SleuthLink.com", default: "localhost:3000" }),
   LINK_LENGTH: num({ default: 6 }),
   LINK_CUSTOM_ALPHABET: str({ default: "abcdefghkmnpqrstuvwxyzABCDEFGHKLMNPQRSTUVWXYZ23456789" }),
   TRUST_PROXY: bool({ default: true }),
@@ -59,7 +59,7 @@ const spec = {
   MAIL_PORT: num({ default: 587 }),
   MAIL_SECURE: bool({ default: false }),
   MAIL_USER: str({ default: "" }),
-  MAIL_FROM: str({ default: "", example: "Kutt <support@kutt.it>" }),
+  MAIL_FROM: str({ default: "", example: "SleuthLink <support@sleuthlink.com>" }),
   MAIL_PASSWORD: str({ default: "" }),
   ENABLE_RATE_LIMIT: bool({ default: false }),
   REPORT_EMAIL: str({ default: "" }),

@@ -1,0 +1,6 @@
+{
+    "watch": ["."],
+    "ext": "js,json,hbs",
+    "ignore": ["node_modules"],
+    "exec": "node server/server.js --development"
+  }

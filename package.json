@@ -4,7 +4,7 @@
   "description": "Modern URL shortener.",
   "main": "./server/server.js",
   "scripts": {
-    "dev": "node --watch-path=./server --watch-path=./custom server/server.js",
+    "dev": "nodemon",
     "start": "node server/server.js --production",
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
@@ -66,6 +66,7 @@
     "@types/node": "18.11.9",
     "@types/nodemailer": "6.4.6",
     "@types/pg": "8.11.10",
+    "nodemon": "^3.1.10",
     "redoc": "2.2.0"
   }
 }
