@@ -15,6 +15,9 @@ const links = require("./handlers/links.handler");
 const routes = require("./routes");
 const utils = require("./utils");
 
+console.log('DEBUG ENV', process.env.BOGUS_ENV_VAR);
+
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
 // run the cron jobs
 // the app might be running in cluster mode (multiple instances) so run the cron job only on one cluster (the first one)
