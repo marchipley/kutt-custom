@@ -43,7 +43,9 @@ module.exports = function({ data }) {
       link_id: data.link.id,
       user_id: data.link.user_id,
       os: os.toLowerCase().replace(/\s/gi, ""),
-      referrer: (referrer && referrer.replace(/\./gi, "[dot]")) || "Direct"
+      referrer: (referrer && referrer.replace(/\./gi, "[dot]")) || "Direct",
+      ip: data.ip,
+      userAgent: userAgent
     })
   );
 

@@ -12,5 +12,4 @@ production-server
 dump.rdb
 docs/api/static
 **/.DS_Store
-db/*
 !db/.gitkeep

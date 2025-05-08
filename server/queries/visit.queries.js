@@ -61,6 +61,8 @@ async function add(params) {
         total: 1,
         link_id: data.link_id,
         user_id: data.user_id,
+        ip_address: data.ip,
+        user_agent: data.userAgent
       });
     }
 
