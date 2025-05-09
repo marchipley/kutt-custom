@@ -7,12 +7,13 @@ const utils = require("../utils");
 const env = require("../env");
 
 async function add(req, res) {
-  const { address, homepage } = req.body;
+  const { address, homepage, protocol } = req.body;
 
   const domain = await query.domain.add({
     address,
     homepage,
-    user_id: req.user.id
+    user_id: req.user.id,
+    protocol
   });
 
   if (req.isHTML) {

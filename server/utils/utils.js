@@ -73,9 +73,9 @@ function addProtocol(url) {
 }
 
 function getShortURL(address, domain) {
-  const protocol = (env.CUSTOM_DOMAIN_USE_HTTPS || !domain) && !env.isDev ? "https://" : "http://";
+  //const protocol = (env.CUSTOM_DOMAIN_USE_HTTPS || !domain) && !env.isDev ? "https://" : "http://";
   const link = `${domain || env.DEFAULT_DOMAIN}/${address}`;
-  const url = `${protocol}${link}`;
+  const url = `${link}`;
   return { address, link, url };
 }
 
@@ -261,7 +261,8 @@ const sanitize = {
     homepage: domain.homepage || env.DEFAULT_DOMAIN,
     uuid: undefined,
     user_id: undefined,
-    banned_by_id: undefined
+    banned_by_id: undefined,
+    protocol: domain.protocol,
   }),
   link: link => {
     const timestamps = parseTimestamps(link);
@@ -275,11 +276,12 @@ const sanitize = {
       banned: !!link.banned,
       id: link.uuid,
       password: !!link.password,
-      link: getShortURL(link.address, link.domain).url,
+      link: getShortURL(link.address, link.domain_protocol + link.domain).url,
     }
   },
   link_html: link => {
     const timestamps = parseTimestamps(link);
+    //console.log("url return: ", getShortURL(link.address, link.domain_protocol + link.domain).url);
     return {
       ...link,
       ...timestamps,
@@ -293,7 +295,8 @@ const sanitize = {
       relative_expire_in: link.expire_in && ms(differenceInMilliseconds(parseDatetime(link.expire_in), new Date()), { long: true }),
       password: !!link.password,
       visit_count: link.visit_count.toLocaleString("en-US"),
-      link: getShortURL(link.address, link.domain),
+      domain_protocol: link.domain_protocol,
+      link: getShortURL(link.address, link.domain_protocol + link.domain),
     }
   },
   link_admin: link => {
@@ -307,7 +310,7 @@ const sanitize = {
       relative_expire_in: link.expire_in && ms(differenceInMilliseconds(parseDatetime(link.expire_in), new Date()), { long: true }),
       password: !!link.password,
       visit_count: link.visit_count.toLocaleString("en-US"),
-      link: getShortURL(link.address, link.domain)
+      link: getShortURL(link.address, link.domain_protocol + link.domain)
     }
   },
   user_admin: user => {

@@ -21,7 +21,8 @@ const selectable = [
   "links.visit_count",
   "links.user_id",
   "links.uuid",
-  "domains.address as domain"
+  "domains.address as domain",
+  "domains.protocol as domain_protocol",
 ];
 
 const selectable_admin = [

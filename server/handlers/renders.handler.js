@@ -152,7 +152,7 @@ async function confirmLinkDelete(req, res) {
   }
   res.render("partials/links/dialog/delete", {
     layout: false,
-    link: utils.getShortURL(link.address, link.domain).link,
+    link: utils.getShortURL(link.address, link.domain_protocol + link.domain).link,
     id: link.uuid
   });
 }
@@ -168,7 +168,7 @@ async function confirmLinkBan(req, res) {
     });
   }
   res.render("partials/links/dialog/ban", {
-    link: utils.getShortURL(link.address, link.domain).link,
+    link: utils.getShortURL(link.address, link.domain_protocol + link.domain).link,
     id: link.uuid
   });
 }

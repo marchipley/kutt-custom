@@ -361,7 +361,7 @@ async function remove(req, res) {
     res.setHeader("HX-Reswap", "outerHTML");
     res.setHeader("HX-Trigger", "reloadMainTable");
     res.render("partials/links/dialog/delete_success", {
-      link: utils.getShortURL(link.address, link.domain).link,
+      link: utils.getShortURL(link.address, link.domain_protocol + link.domain).link,
     });
     return;
   }
@@ -448,7 +448,7 @@ async function ban(req, res) {
     res.setHeader("HX-Reswap", "outerHTML");
     res.setHeader("HX-Trigger", "reloadMainTable");
     res.render("partials/links/dialog/ban_success", {
-      link: utils.getShortURL(link.address, link.domain).link,
+      link: utils.getShortURL(link.address, link.domain_protocol + link.domain).link,
     });
     return;
   }
@@ -495,7 +495,7 @@ async function redirect(req, res, next) {
       res.render("url_info", { 
         title: "Short link information",
         target: link.target,
-        link: utils.getShortURL(link.address, link.domain).link
+        link: utils.getShortURL(link.address, link.domain_protocol + link.domain).link
       });
       return;
     }

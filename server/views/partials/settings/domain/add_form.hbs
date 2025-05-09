@@ -9,6 +9,19 @@
   "
 >
   <div class="inputs">
+    <label class="{{#if errors.protocol}}error{{/if}}">
+      Protocol:
+      <select
+        id="protocol"
+        name="protocol"
+        hx-preserve="true"
+        class="protocol-select"
+      >
+        <option value="http://">http://</option>
+        <option value="https://" selected>https://</option>
+      </select>
+      {{#if errors.protocol}}<p class="error">{{errors.protocol}}</p>{{/if}}
+    </label>
     <label class="{{#if errors.address}}error{{/if}}">
       Address:
       <input 
@@ -22,6 +35,7 @@
       />
       {{#if errors.address}}<p class="error">{{errors.address}}</p>{{/if}}
     </label>
+
     <label class="{{#if errors.homepage}}error{{/if}}">
       Homepage (Optional):
       <input 
